@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh ' docker build -t ubuntu/khanshoyeb7 . '
+                sh ' docker build -t khanshoyeb7/fromjenkins . '
             }
         }
         stage('Push Docker Image') {
@@ -17,7 +17,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'dockerpass', variable: 'dockerpasswd')]) {
                 sh ' docker login -u khanshoyeb7 -p ${dockerpasswd}'
 }
-                sh ' docker push  ubuntu/khanshoyeb7'
+                sh ' docker push  khanshoyeb7/fromjenkins'
             }
         }
     }
