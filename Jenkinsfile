@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Docker Socket') {
+            steps {
+                sh 'sudo chmod 666 /var/run/docker.sock '
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh ' docker build -t ubuntu/khanshoyeb7 . '
